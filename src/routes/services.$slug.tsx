@@ -2,7 +2,7 @@ import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, ChevronRight } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { CTASection } from "@/components/site/CTASection";
-import { SERVICES } from "@/lib/site-data";
+import { SERVICES, type ServiceData } from "@/lib/site-data";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
@@ -36,7 +36,7 @@ export const Route = createFileRoute("/services/$slug")({
 });
 
 function ServiceDetailPage() {
-  const { service: s } = Route.useLoaderData();
+  const { service: s } = Route.useLoaderData() as { service: ServiceData };
 
   return (
     <SiteLayout>
